@@ -1,0 +1,92 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+
+int main()
+{
+ int n{};
+ int num, mod_num;
+ int exp, mod_exp;
+
+ const int num_case{6}, num_array{4};
+ int array[num_case][num_array] =
+    {
+         {6,2,4,8}, //2
+         {1,3,9,7}, //3
+         {6,4,6,4}, //4
+         {1,7,9,3}, //7
+         {6,8,4,2}, //8
+         {1,9,1,9}  //9
+    };
+
+ std::cin >> n;
+
+ for(int i = 1; i <= n; i++)
+    {
+        std::cin >> num >> exp;
+
+        mod_num = static_cast<int> (num % 10);
+        mod_exp = static_cast<int> (exp % 4);
+
+        if (exp == 0)
+            {
+                std::cout << 1 << std::endl;
+            }
+        else if (exp == 1)
+            {
+                std::cout << mod_num << std::endl;
+            }
+        else if (mod_num == 1 || mod_num == 5 || mod_num == 6)
+            {
+                std::cout << mod_num << std::endl;
+            }
+        else
+            {
+            switch(mod_num)
+                {
+                    case 2:
+                    {
+                        std::cout << array[0][mod_exp] << std::endl;
+                        break;
+                    }
+                    case 3:
+                    {
+                        std::cout << array[1][mod_exp] << std::endl;
+                        break;
+                    }
+                    case 4:
+                    {
+                        std::cout << array[2][mod_exp] << std::endl;
+                        break;
+                    }
+                    case 7:
+                    {
+                        std::cout << array[3][mod_exp] << std::endl;
+                        break;
+                    }
+                    case 8:
+                    {
+                        std::cout << array[4][mod_exp] << std::endl;
+                        break;
+                    }
+                    case 9:
+                    {
+                        std::cout << array[5][mod_exp] << std::endl;
+                        break;
+                    }
+                    case 0:
+                    {
+                        if (num == 0 && exp == 0){mod_num = 1;}
+                        else {std::cout << mod_num << std::endl;}
+                        break;
+                    }
+                    default:
+                    {
+                        std::cout << "Data error!" << std::endl;
+                        break;
+                    }
+                }
+            }
+    }
+return 0;
+}
